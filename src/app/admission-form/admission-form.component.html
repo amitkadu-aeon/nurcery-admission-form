@@ -1,0 +1,27 @@
+<div class="container">
+    <form [formGroup]="admissionForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" formControlName="sName" class="form-control" required placeholder="Surname" />
+                <div *ngIf="isValidInput('sName')" class="alert alert-danger">
+                    <div *ngIf="admissionForm.controls['sName'].errors.required">
+                        Surname is required.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <input type="text" formControlName="fName" class="form-control" required placeholder="Firstname" />
+                <div *ngIf="isValidInput('fName')" class="alert alert-danger">
+                    <div *ngIf="admissionForm.controls['fName'].errors.required">
+                        Firstname is required.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary" [disabled]="!admissionForm.valid">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
